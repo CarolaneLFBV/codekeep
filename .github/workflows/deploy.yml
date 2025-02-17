@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies & build VitePress
         run: |
           npm install
-          npm run build
+          npm run docs:build
 
       - name: Check if build has successfully generated
         run: |
