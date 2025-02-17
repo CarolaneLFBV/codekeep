@@ -1,1 +1,12 @@
+# Dépendances Node.js
+node_modules/
+
+# Cache VitePress
+.vitepress/cache/
+
+# Fichiers de build (le site généré)
+docs/.vitepress/dist/
+
+# Fichiers système et éditeur
 .DS_Store
+.vscode/
