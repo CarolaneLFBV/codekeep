@@ -18,22 +18,22 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY_CODEKEEP }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H ${{ secrets.IP_VPS }} >> ~/.ssh/known_hosts
+          ssh-keyscan -H ${{ secrets.VPS_IP }} >> ~/.ssh/known_hosts
 
       - name: Install dependencies & build VitePress
         run: |
           npm install
-          npm run docs:build
+          npm run build
+
+      - name: Check if build has successfully generated
+        run: |
+          ls -la docs/.vitepress/dist/
 
       - name: Deploy to VPS
         run: |
-          ssh ubuntu@${{ secrets.IP_VPS }} << 'EOF'
-            rm -rf /var/www/codekeep.dev/docs/.vitepress/dist
-          EOF
-          scp -r docs/.vitepress/dist ubuntu@${{ secrets.IP_VPS }}:/var/www/codekeep.dev/
+          ssh ubuntu@${{ secrets.VPS_IP }} "rm -rf /var/www/codekeep.dev/*"
+          scp -r docs/.vitepress/dist/* ubuntu@${{ secrets.VPS_IP }}:/var/www/codekeep.dev/
 
       - name: Restart Nginx
         run: |
-          ssh ubuntu@${{ secrets.IP_VPS }} << 'EOF'
-            sudo systemctl restart nginx
-          EOF
+          ssh ubuntu@${{ secrets.VPS_IP }} "sudo systemctl restart nginx"
