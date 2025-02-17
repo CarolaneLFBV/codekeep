@@ -31,7 +31,7 @@ jobs:
 
       - name: Deploy to VPS
         run: |
-          ssh ubuntu@${{ secrets.VPS_IP }} "rm -rf /var/www/codekeep.dev/*"
+          ssh ubuntu@${{ secrets.VPS_IP }} "sudo rm -rf /var/www/codekeep.dev/*"
           scp -r docs/.vitepress/dist/* ubuntu@${{ secrets.VPS_IP }}:/var/www/codekeep.dev/
 
       - name: Restart Nginx
