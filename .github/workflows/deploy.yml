@@ -20,12 +20,20 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.IP_VPS }} >> ~/.ssh/known_hosts
 
+      - name: Install dependencies & build VitePress
+        run: |
+          npm install
+          npm run build
+
       - name: Deploy to VPS
         run: |
           ssh ubuntu@${{ secrets.IP_VPS }} << 'EOF'
-            cd /var/www/codekeep.dev
-            git pull origin main
-            npm install  
-            npm run build  
-            sudo systemctl restart nginx  
+            rm -rf /var/www/codekeep.dev/docs/.vitepress/dist
+          EOF
+          scp -r docs/.vitepress/dist ubuntu@${{ secrets.IP_VPS }}:/var/www/codekeep.dev/
+
+      - name: Restart Nginx
+        run: |
+          ssh ubuntu@${{ secrets.IP_VPS }} << 'EOF'
+            sudo systemctl restart nginx
           EOF
