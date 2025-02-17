@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as c}from"./chunks/framework.BDxlaA_J.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"concepts/solid-principle.md","filePath":"concepts/solid-principle.md"}'),o={name:"concepts/solid-principle.md"};function s(i,n,r,p,a,l){return c(),t("div")}const m=e(o,[["render",s]]);export{_ as __pageData,m as default};
