@@ -1,11 +1,11 @@
 # CI (Continuous Integration) with GitHub Actions
 
-*Last Updated: Dec 7, 2024*
+*Last Updated: March 23, 2025*
 
 The Continuous Integration is an automated process that verifies and validates the source code automatically with each modification in the repository (push or pull request). It enables quick error detection before the code is merged into the branch.
 
-<div style="display: flex; justify-content: center;">
-<img src="/tools/ci/ci-diagram.png" alt="Diagram representing the process of a CI" class="small-image" />
+<div class="center">
+<img src="/tools/ci/ci-rep.png" alt="Diagram representing the process of a CI" class="small-image" />
 </div>
 
 ## GitHub Actions
@@ -20,12 +20,12 @@ In this note, we will follow the example of implementing a CI that will run a li
 
 ### Creating a the CI file
 First of all, you will need to create the `.github` folder, with its `workflows` subfolder:
-<div style="display: flex; justify-content: center;">
+<div class="center">
 <img src="/tools/ci/ci-folders.png" alt="Screenshot representing the folders .github and workflows" />
 </div>
 
 After creating your two folders, you can create any `YAML file`, for example, let's create a `swiftlint.yml` file, so when my CI starts, it will lint the entire code and check for errors.
-<div style="display: flex; justify-content: center;">
+<div class="center">
 <img src="/tools/ci/ci-swiftlint.png" alt="Screenshot representing the folders .github and workflows" class="small-image"/>
 </div>
 
@@ -98,6 +98,10 @@ Careful! I am using the macOS environment since Swift is specific to macOS, it n
 :::warning
 Even though SwiftLint doesn't need Node.js, this step garantees that the environment uses Node.js in case of tools or dependencies that will need it.
 :::
+
+<div class="center">
+<img src="/tools/ci/ci-diagram.png" alt="Diagram representing the process of a CI" class="small-image" />
+</div>
 
 ## Conclusion
 By implementing Continuous Integration with GitHub Actions, we’re making code validation more efficient and ensuring a healthier codebase. 

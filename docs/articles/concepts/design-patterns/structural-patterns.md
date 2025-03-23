@@ -1,25 +1,23 @@
 # Structural Patterns
 
-*Last Updated: Dec 7, 2024*
+*Last Updated: March 23, 2025*
 
 Structural patterns help organize and manage relationships between objects to form larger structures and enhance flexibility and reusability.
 
 :::warning
-I am only listing the ones that I've been dealing with or interact with a couple of times :)
+I am only sharing the patterns I have interacted with!
 :::
 
 ## TL;DR
 * `Adapter`: Makes incompatible interfaces compatible by acting as a translator.
-* `Bridge`: Separates an abstraction from its implementation, letting both vary independently.
-* `Decorator`: Adds extra features to an object dynamically, like layers on top of the base.
 * `Model-View-Controller`: Separates data, interface, and control logic for organized structure.
 * `Model-View-ViewModel`: Enhances MVC by adding a ViewModel, which acts as a bridge between Model and View, allowing data binding and cleaner separation of business logic and UI.
 
 ## Adapter Pattern
 ### Definition
-The `Adapter Pattern` helps two pieces of code with different interfqces work together.
-It’s commonly used when integrating third-party libraries or legacy code that doesn't match the expected interface.
-<div style="display: flex; justify-content: center;">
+The `Adapter Pattern` allows two incompatible interfaces to work together by creating a **middleman (adapter)** that translates between them.
+
+<div class="center">
 <img src="/concepts/design-patterns/dp-adapter.png" alt="Diagram representing how the Adapter design pattern works" />
 </div>
 
@@ -30,75 +28,217 @@ Think about when you are traveling: when you decide to travel to a different con
 * `Adaptation`: The adapter translates or maps requests from the client interface to the adaptee's interface.
 * `Usage`: The client can now use the adapter as if it were using the original system or class.
 
--> So, an adapter class sits between two incompatible parts, takes requests from one part, translates it, and sends it to the other part, so it can understand.
+### Example - In Code
+```swift
+// Target (What the client expects)
+protocol LegacyPrinter {
+    func printText(_ text: String)
+}
+```
 
-## Bridge Pattern
-### Definition 
-The `Birdge Pattern` helps split an abstraction (a high-level idea) from its implementation (the details). 
-Need an example? I got one for you: suppose you have a magic remote that controls a devices such as different TVs. Well, the abstraction is the remote, and the remote is used by implementations such as the TVs.
+```swift
+// Adaptee (New incompatible class)
+class ModernPrinter {
+    func printModern(_ content: String) {
+        print("🖨️ Modern Printer Output: \(content)")
+    }
+}
+```
 
-<div style="display: flex; justify-content: center;">
-<img src="/concepts/design-patterns/dp-bridge.png" alt="Diagram representing how the Bridge design pattern works" />
-</div>
+```swift
+// Adpter
+class PrinterAdapter: LegacyPrinter {
+    private let modernPrinter = ModernPrinter()
+    
+    func printText(_ text: String) {
+        modernPrinter.printModern(text)
+    }
+}
+```
 
-:::info
-The relation Has-A defines the bridge between the two hierarchies (Remote and TV)
-:::
-
-### Flow
-* `Abstraction`: Defines a high-level interface, often extendeed by refined abstractions.
-* `Implementation`: Concrete implementations are separated into their own classes.
-* `Usage`: The abstraction delegates operations to the implementation, allowing both to evolve independetly.
-
--> We got two parts: one for general controle (the remote), and one for the specific device (the TV, the Radio). The remote sends signals, but each device responds its way.
-
-## Decorator Pattern
-### Definition 
-The `Decorator Pattern` lets you add new features or "decorations" to an object ithout changing its structure.
-It's like adding extra toppings on a pizza–the pizza stays the same, but you add things to it!
-
-<div style="display: flex; justify-content: center;">
-<img src="/concepts/design-patterns/dp-deco.png" alt="Diagram representing how the Decorator design pattern works" />
-</div>
-
-### Flow
-* `Component Interface`: Defines the base interface for objects that can have responsibilities added.
-* `Concrete Component`: The object being decorated.
-* `Decorator`: Wraps the component, adding new behavior while conforming to the same interface.
-* `Usage`: Multiple decorators can be stacked to add layered behaviors dynamically.
-
--> You have a basic object (like a plain pizza), and then you can wrap it with decorators (extra cheese, pepperoni) that add extra functionality or features. Each decorator adds something new.
+#### Usage
+```swift
+func sendToPrinter(printer: LegacyPrinter) {
+    printer.printText("Hello, Adapter Pattern!")
+}
+```
 
 ## Model-View-Controller (MVC)
 ### Definition
-The `MVC` is a fundamental design pattern in iOS development. 
-It seperates the data (Model), user interface (View), and the logic that connects them (Controller).
-* The `Model` represents the data and business logic of the application. It is responsible for retrieveing data, managing it, and notifying the View when data changes.
-* The `View` displays the user interface and presents the data to the user.It listens for user input and forwards these actions to the Controller.
-* The `Controller` acts as am intermediary between the Model and the View. Receives input from the View, processes it (often involving calls to the Model), and upadtes the View accordingly.
+The `MVC` is an architectural pattern that separates your code into 3 clear responsibilities:
+* `Model`: Manages the data and business logic.
+* `View`: Handles the UI and what the user sees.
+* `Controller`: Acts as the middleman — it connects the Model and the View.
+The goal here is to separate concerns so the code is easier to manage, test and update.
+
+Think of your MVC as a restaurant:
+* Model = The kitchen (prepares the food = data)
+* View = The customer’s table (displays the food)
+* Controller = The waiter (connects customer & kitchen)
 
 ### Flow
-<div style="display: flex; justify-content: center;">
+* The `View` receives user input and notifies the `Controller`.
+* The `Controller` interacts with the `Model` to get or update data. 
+* Once the `Model` is updated of fetched, the `Controller` updates the `View`.
+
+<div class="center">
 <img src="/concepts/design-patterns/dp-mvc.png" alt="Diagram representing how the MVC design pattern works" />
 </div>
 
-* The `View` receives user input (1) and notifies the `Controller` (1🔔).
-* The `Controller` interacts with the `Model` to get or update data (2). 
-* Once the `Model` is updated of fetched (🔄3), the `Controller` updates the `View` (3).
+### Example - In Code
+```swift
+// Model
+struct User {
+    var name: String
+}
+```
+
+```swift
+// Controller
+@Observable
+class UserController {
+    private(set) var user: User = User(name: "Alice")
+    
+    func changeUserName(to newName: String) {
+        user.name = newName
+    }
+}
+```
+
+```swift
+// View
+import SwiftUI
+
+struct UserView: View {
+    @State private var controller: UserController
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("👤 User Name: \(controller.user.name)")
+                .font(.title)
+            
+            Button("Change Name to Bob") {
+                controller.changeUserName(to: "Bob")
+            }
+        }
+        .padding()
+    }
+}
+```
 
 ## Model-View-ViewModel (MVVM)
 ### Definition
-The `MVVM` enhances the MVC pattern with a `ViewModel` layer that separates business logic from the View.
+The `MVVM`  is a modern architectural pattern designed to separate concerns in UI applications.
+The goal: Keep your UI logic, business logic, and data model clean and separated.
+
 * The `Model` is similar to MVC, which represents the data and business logic of the application.
 * The `View` displays the user interface and binds to properties exposed by the ViewModel.
-* The `ViewModel` acts as an intermediary between the Model and the View, and exposes data in a way that the View can easily consume. It provides properties that the View can bind to, and it may include methods that the View can invoke without needing to know the specifics of the Model.
+* The `ViewModel` acts as an intermediary between the Model and the View, and exposes data in a way that the View can easily consume.
+
+Let's use our creativity again, and imagine a smart display screen:
+* Model = The raw data (like API response or database info)
+* ViewModel = The smart brain that formats, transforms, and prepares data for display
+* View = The screen — shows what the ViewModel gives it and sends back user actions
 
 ### Flow
-<div style="display: flex; justify-content: center;">
+* The `View` binds to properties in the `ViewModel`.
+* When the `ViewModel` receives updates from the `Model` or processes user input, it notifies the `View` of changes.
+* The `View` updates automatically based on the data bound to the `ViewModel`.
+
+<div class="center">
 <img src="/concepts/design-patterns/dp-mvvm.png" alt="Diagram representing how the MVC design pattern works" />
 </div>
 
-* The `View` binds to properties in the `ViewModel` (1).
-* When the `ViewModel` receives updates from the `Model` or processes user input, it notifies the `View` of changes (2).
-* The `View` updates automatically based on the data bound to the `ViewModel` (3).
- 
+### Example - In Code
+```swift
+// Model
+extension App.Entities {
+    struct Category: Identifiable {
+        var id: UUID
+        var title: String
+        var color: Color
+        
+        init(
+            id: UUID = UUID(),
+            title: String,
+            color: Color,
+        ) {
+            self.id = id
+            self.title = title
+            self.color = color
+        }
+    }
+}
+```
+
+```swift
+// Here in order to interact with the data (SwiftData), I 'm using a repository.
+extension App.Repositories {
+    struct CategoryRepository: App.Protocols.CategoryDataProviding {
+
+        @MainActor
+        static func fetch() async throws -> [CategoryEntity] {
+            let categoriesFetch = FetchDescriptor<CategoryResponseEntity>()
+            do {
+                let data = try getContext().fetch(categoriesFetch)
+                return data
+                    .convert()
+            } catch {
+                print("Error: \(error.localizedDescription)")
+                throw error
+            }
+        }
+    }
+}
+```
+
+```swift
+// ViewModel
+extension App.Views.CategoriesList {
+    @Observable @MainActor
+    final class ViewModel {
+        var categories: [App.Entities.Category] = []
+
+        func loadData() async {
+            do {
+                categories = try await App.Repositories.CategoryRepository.fetch()
+            } catch {
+                print("Error while loading data, \(error.localizedDescription)")
+            }
+        }
+    }
+}
+```
+
+```swift
+// View
+import SwiftUI
+
+extension App.Views {
+    struct CategoriesList: View {
+        @State private var viewModel = ViewModel()
+        
+        var body: some View {
+            content
+                .task {
+                    await viewModel.loadData()
+                }
+                .navigationTitle("categories")
+        }
+    }
+}
+
+private extension App.Views.CategoriesList {
+    var content: some View {
+      ScrollView {
+        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: DS.Spacing.large) {
+            ForEach(viewModel.categories) { category in
+                Text(category.title)
+            }
+        }
+    }
+  }
+}
+
+```
+

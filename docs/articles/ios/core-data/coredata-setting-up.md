@@ -19,7 +19,7 @@ In this article, we are going to cover different parts:
 
 Please open Xcode and select `Create New Project…`. Then, choose `App` in the `iOS` category.
 
-<div style="display: flex; justify-content: center;">
+<div class="center">
 <img src="/ios/coredata/cd-project.png" alt="Screenshot representing the Xcode project init"  />
 </div>
 
@@ -34,7 +34,7 @@ Now, let’s create our first Core Data file.
 
 Create a new file and scroll down to find `Data Model` in the `Core Data` category:
 
-<div style="display: flex; justify-content: center;">
+<div class="center">
 <img src="/ios/coredata/cd-file.png" alt="Screenshot representing the creation of the core data model file"  />
 </div>
 
@@ -55,7 +55,7 @@ When creating your `.xcdatamodeld` file, **choose the name carefully** and avoid
 
 When created, you end up in the Core Data Editor:
 
-<div style="display: flex; justify-content: center;">
+<div class="center">
 <img src="/ios/coredata/cd-editor.png" alt="Screenshot representing the Core Data Editor"  />
 </div>
 
@@ -69,7 +69,7 @@ Here’s what you’re looking at:
 
 Great! Now let’s add our first Entity. Click on the `Add Entity` button (at the bottom of the Editor) and name it `Todo`. You can now click on Todo, and start to add attributes:
 
-<div style="display: flex; justify-content: center;">
+<div class="center">
 <img src="/ios/coredata/cd-attributes.png" alt="Screenshot representing Data Model with Entities and Attributes"  />
 </div>
 
@@ -87,7 +87,7 @@ Be careful tho! Each attribute you create is going to be optional by default. Yo
 
 You get the name of your attribute, its type, and different options. You can uncheck or not the `Optional` option, and that's what I did:
 
-<div style="display: flex; justify-content: center;">
+<div class="center">
 <img src="/ios/coredata/cd-navigator.png" alt="Screenshot representing the Navigator of the Core Data Editor"  />
 </div>
 

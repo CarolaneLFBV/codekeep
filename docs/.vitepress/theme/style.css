@@ -145,3 +145,8 @@
   height: auto;
   padding: 1rem;
  }
+
+.center {
+  display: flex;
+  justify-content: center;
+}

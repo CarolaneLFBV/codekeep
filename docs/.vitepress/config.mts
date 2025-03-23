@@ -2,8 +2,9 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  lang: 'en-US',
   title: "CodeKeep",
-  description: "A Vitepress Site For Documentation",
+  description: "Keep exploring. Keep coding. Keep growing.",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     search: { provider: 'local' },
@@ -47,23 +48,17 @@ export default defineConfig({
             { text: 'Managing Data with Core Data: Fundamentals', link: 'articles/ios/core-data/coredata-fundamentals.md' },
             { text: 'Managing Data with Core Data: Setting Up', link: 'articles/ios/core-data/coredata-setting-up.md' },   
             { text: 'Managing Data with Core Data: CRUD Operations', link: 'articles/ios/core-data/coredata-crud-operations.md' },             
-          ]
+          ],
+          collapsed: false
           },           
           { text: 'Understanding Memory Mangement in Swift', link: 'articles/ios/memory-management.md' }, 
-        ],
-        collapsed: true
-      },
-      {
-        text: 'Web',
-        items: [ 
-          { text: 'Types vs. Interfaces in Typescript', link: 'articles/web/types-vs-interfaces.md' },
         ],
         collapsed: true
       },
     ],
 
     footer: {
-      message: "<a href='https://github.com/carolaneLFBV' target='_blank'>GitHub</a> <a href='#' target='_blank'>LinkedIn</a>",
+      message: "<a href='https://github.com/carolaneLFBV' target='_blank'>GitHub</a> <a href='https://www.linkedin.com/in/carolane-lefebvre' target='_blank'>LinkedIn</a>",
       copyright: "Copyright © 2020-present Carolane Lefebvre 💻"
     }
   }

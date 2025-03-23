@@ -17,20 +17,16 @@ hero:
       link: /contact
 
 features:
-- icon: 🔍  
-  title: Problem Solver & Project Creator  
-  details: Loves analyzing problems and creating projects—whether practical or purely fun. Focused on optimizing processes both in life and development.
-
 - icon: 📱  
   title: Junior iOS Developer  
   details: Turns ideas into apps with Swift and SwiftUI. Exploring frameworks like Core Data, SwiftData, and UIKit to sharpen iOS expertise.
 
-- icon: 🌐  
-  title: Web Developer (on the side)  
-  details: Expands skills beyond iOS through web development, using VueJS and NuxtJS to stay versatile and adaptable.
+- icon: 🔍  
+  title: Problem Solver & Project Creator  
+  details: Loves analyzing problems, optimizing processes and creating projects—whether practical or purely fun.
 
 - icon: 📚  
   title: Lifelong Learner  
-  details: Passionate about learning and creating. Currently in the second year of a Master’s in Software Engineering and an apprenticeship at Unistra.
+  details: Passionate about learning and creating. Currently in the second year of a MsC  and an apprenticeship at Unistra.
 ---
 

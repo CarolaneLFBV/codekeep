@@ -1,16 +1,20 @@
 # CD (Continuous Deployment) with GitHub Actions
 
-*Last Updated: Dec 7, 2024*
+*Last Updated: March 23, 2025*
 
 Continuous Deployment (CD) automates the deployment of code to a production environment, allowing teams to deliver new features, fixes, and updates to users quickly. This tutorial builds on our CI setup by showing how to automatically deploy code once it has passed the CI checks.
 
-<div style="display: flex; justify-content: center;">
-<img src="/tools/cd/cd-diagram.png" alt="Diagram representing the process of a CD" />
+<div class="center">
+<img src="/tools/cd/cd-rep.png" alt="Diagram representing the process of a CD" />
 </div>
 
 ## What is Continuous Deployment?
 Continuous Deployment deploys code to a live environment after it passes all tests and validation steps. 
 Unlike CI, which only verifies the code, CD makes the verified code available to end-users immediately, providing faster feedback and delivering value continuously.
+
+<div class="center">
+<img src="/tools/cd/cd-diagram.png" alt="Diagram representing the process of a CD" />
+</div>
 
 ## GitHub Actions
 Will we be using `GitHub Actions` to implement a CI into a Github repository. But first, what is Github Actions?
@@ -30,7 +34,7 @@ First, create a new YAML file in your `.github/workflows` directory. This file w
 :::warning
 When developing a Vitepress site, the deploy.yml file is automatically generated. So please, check if there's already a folder with a deploy yaml file. If not, create it.
 :::
-<div style="display: flex; justify-content: center;">
+<div class="center">
 <img src="/tools/cd/cd-folders.png" alt="Screenshot representing the folders .github and workflows"/>
 </div>
 

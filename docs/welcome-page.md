@@ -14,27 +14,27 @@ const members = [
 
 <VPTeamMembers size="small" :members="members" style="display: flex; justify-content: center;"/>
 
-Welcome to my personal space where I share discoveries, ideas, and lessons learned in software development. My goal is simple: to document the concepts, tools, and practices I encounter as I grow in my journey as an engineer, while creating a valuable resource for the community.  
+This is my personal space to share discoveries, ideas, and lessons learned throughout my software development journey. My mission is simple: to document the tools, concepts, and practices I encounter as I grow as an engineer—while building a resource that’s helpful to others in the tech community.
 
 ## **Why this site?**
-`CodeKeep` exists with a simple mission:
-- To share tech discoveries in a straightforward and accessible way.
-- To build a resource where concepts are explained clearly and simply.
-- To document a continuous learning journey, even if some topics start incomplete. 
+`CodeKeep` exists with a clear purpose:
+- To share technical discoveries in a simple, accessible way.
+- To build a knowledge base where concepts are explained clearly.
+- To document a continuous learning journey—even if some topics begin unfinished or evolve over time.
 
-Articles are regularly updated as I grow and learn. If you notice a topic that’s missing or unfinished, feel free to reach out! Your feedback not only helps improve this site but also makes it more valuable for the entire community. `CodeKeep is a work in progress—just like my own development journey.`
+Articles are regularly updated as I learn and grow. If you spot a missing or incomplete topic, feel free to reach out. Your input helps shape this site into something better for everyone.
+**CodeKeep is a work in progress—just like the journey of becoming a better engineer.**
 
 ## **About Me**
-Hey there! I’m `Okeep`, a 24-year-old Master’s student in Software Engineering. Alongside my studies, I work as an iOS and Web Engineer, building applications and exploring new tools to craft innovative solutions.
+Hi! I’m `Carolane`, or you can call me `Okeep`, a 24-year-old Master’s student in Software Engineering, currently in my final year at the University of Strasbourg (graduating March 2026). Alongside my studies, I’m also an apprentice iOS Engineer, designing and building native apps as part of my day-to-day work.
 
-With a passion for all things tech, my curiosity pushes me to:
-- **Optimize**: Improve code efficiency and maintainability.
-- **Innovate**: Experiment with fresh ideas and approaches.  
-- **Share**: Document and pass on knowledge to support the community.
+My Current Stack Includes:
+* `Languages & Frameworks`: Swift, SwiftUI, SwiftData, Core Data, CloudKit, Charts, Vapor
+* `Architecture & Patterns`: MVVM, MVC, Clean Architecture, UserDefaults, JSON
+* `Tools`: Xcode, Git (GitHub & GitLab)
 
-Though I consider myself a `beginner to intermediate engineer`, I’m always eager to contribute and grow. There’s so much to learn, and I believe sharing that journey makes us all better engineers.
+I’m especially focused on writing clean, maintainable code and exploring Apple’s evolving frameworks. I enjoy experimenting with app architecture and syncing data across devices with iCloud and CloudKit.
 
-Whether you’re just starting or are a seasoned pro, I hope my articles offer insights, inspiration, and maybe even spark some valuable discussions. Feel free to [reach out with feedback](/contact.md). 🚀 
+Whether you’re just starting with iOS or have years under your belt, I hope you find something here that helps, inspires, or gets you thinking.
 
-## **Join the Journey**
-Thank you for stopping by `CodeKeep`! This project is both a personal learning log and an open invitation to collaborate. Whether you’re here to explore new ideas, find solutions, or just feed your curiosity, I hope you enjoy your visit. Happy exploring! 🌟
+**Let’s keep building. Let’s keep learning. 🚀**
